@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Page - Amanah Gaming Store</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding-top: 50px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h2>Stock Page</h2>
+        <p>Welcome, Admin!</p>
+        <p>Kamu bisa mengatur stock diamond berbagai macam game disini</p>
+        
+        <!-- Tabel untuk daftar game dan stok -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Gambar</th>
+                    <th>Game</th>
+                    <th>Stok</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="./images/ML.png" alt="Mobile Legends"></td>
+                    <td>Mobile Legends</td>
+                    <td><span id="mlStock">100,000</span></td>
+                    <td class="btn-container">
+                        <button onclick="decrement('ml')">-</button>
+                        <button onclick="increment('ml')">+</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="./images/PUBGM.png" alt="PUBG Mobile"></td>
+                    <td>PUBG Mobile</td>
+                    <td><span id="pubgStock">100,000</span></td>
+                    <td class="btn-container">
+                        <button onclick="decrement('pubg')">-</button>
+                        <button onclick="increment('pubg')">+</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="./images/FF.png" alt="Free Fire"></td>
+                    <td>Free Fire</td>
+                    <td><span id="ffStock">100,000</span></td>
+                    <td class="btn-container">
+                        <button onclick="decrement('ff')">-</button>
+                        <button onclick="increment('ff')">+</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="./images/AB.png" alt="Arena Breakout"></td>
+                    <td>Arena Breakout</td>
+                    <td><span id="arenaStock">100,000</span></td>
+                    <td class="btn-container">
+                        <button onclick="decrement('arena')">-</button>
+                        <button onclick="increment('arena')">+</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="./images/CODM.png" alt="Call of Duty Mobile"></td>
+                    <td>Call of Duty Mobile</td>
+                    <td><span id="codStock">100,000</span></td>
+                    <td class="btn-container">
+                        <button onclick="decrement('cod')">-</button>
+                        <button onclick="increment('cod')">+</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="./images/Valorant.png" alt="Valorant"></td>
+                    <td>Valorant</td>
+                    <td><span id="valorantStock">100,000</span></td>
+                    <td class="btn-container">
+                        <button onclick="decrement('valorant')">-</button>
+                        <button onclick="increment('valorant')">+</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- Tombol Logout -->
+        <button class="btn-logout" onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        // Fungsi untuk memformat angka dengan pemisah ribuan
+        function formatNumber(number) {
+            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // Fungsi untuk menambah stok
+        function increment(game) {
+            var stockElement = document.getElementById(game + 'Stock');
+            var currentStock = parseInt(stockElement.textContent.replace(/,/g, ''));
+            stockElement.textContent = formatNumber(currentStock + 1);
+        }
+
+        // Fungsi untuk mengurangi stok (mencegah stok negatif)
+        function decrement(game) {
+            var stockElement = document.getElementById(game + 'Stock');
+            var currentStock = parseInt(stockElement.textContent.replace(/,/g, ''));
+            if (currentStock > 0) {
+                stockElement.textContent = formatNumber(currentStock - 1);
+            }
+        }
+
+        // Fungsi untuk logout (redirect ke halaman login)
+        function logout() {
+            // Redirect ke halaman utama atau endpoint logout
+            // Untuk demo, redirect ke halaman login
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
